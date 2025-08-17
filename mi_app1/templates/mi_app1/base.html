@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>🍷 Mi Proyecto: Vino Argentino</h1>
+        <nav>
+            <a href="{% url 'crear_bodega' %}">Crear Bodega</a> |
+            <a href="{% url 'crear_enologo' %}">Crear Enólogo</a> |
+            <a href="{% url 'crear_vino' %}">Crear Vino</a> |
+            <a href="{% url 'buscar_vino' %}">Buscar Vino</a>
+        </nav>
+        <hr>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <hr>
+        <p>© 2025 Vino Argentino</p>
+    </footer>
+</body>
+</html>

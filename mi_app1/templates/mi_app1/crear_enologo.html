@@ -1,0 +1,12 @@
+{% extends 'mi_app1/base.html' %}
+
+{% block title %}Crear Enólogo{% endblock %}
+
+{% block content %}
+  <h2>Crear Enólogo</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Enólogo</button>
+  </form>
+{% endblock %}

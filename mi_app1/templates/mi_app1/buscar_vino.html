@@ -1,0 +1,23 @@
+{% extends 'mi_app1/base.html' %}
+
+{% block title %}Buscar Vino{% endblock %}
+
+{% block content %}
+  <h2>Buscar Vino</h2>
+  <form method="get">
+    <label for="nombre">Nombre del vino:</label>
+    <input type="text" name="nombre" id="nombre">
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if vinos %}
+    <h3>Resultados:</h3>
+    <ul>
+      {% for vino in vinos %}
+        <li>{{ vino.nombre }} - {{ vino.año_cosecha }} - {{ vino.tipo }}</li>
+      {% endfor %}
+    </ul>
+  {% elif vinos is not None %}
+    <p>No se encontraron resultados.</p>
+  {% endif %}
+{% endblock %}
