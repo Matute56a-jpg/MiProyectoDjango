@@ -1,14 +1,19 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import BodegaForm, EnologoForm, VinoForm
 from .models import Bodega, Enologo, Vino
-from django.http import HttpResponse
-
-def lista_vinos(request):
-    vinos = Vino.objects.select_related('bodega', 'bodega__region').all()
-    return render(request, 'lista_vinos.html', {'vinos': vinos})
+import os
 
 def prueba(request):
     return HttpResponse("¡Vista de prueba funcionando!")
+
+vista_de_prueba = prueba
+
+print("CARGADO mi_app1/views.py DESDE:", os.path.abspath(__file__))
+
+def lista_vinos(request):
+    vinos = Vino.objects.select_related('bodega').all()
+    return render(request, 'lista_vinos.html', {'vinos': vinos})
 
 def crear_bodega(request):
     if request.method == 'POST':
