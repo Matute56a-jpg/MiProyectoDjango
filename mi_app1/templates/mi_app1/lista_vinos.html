@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Vinos</title>
+</head>
+<body>
+    <h1>Vinos registrados</h1>
+    <ul>
+        {% for vino in vinos %}
+            <li>
+                <strong>{{ vino.nombre }}</strong> - {{ vino.bodega.nombre }} ({{ vino.bodega.region.nombre }}) - Año: {{ vino.anio }}
+            </li>
+        {% empty %}
+            <li>No hay vinos registrados.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
