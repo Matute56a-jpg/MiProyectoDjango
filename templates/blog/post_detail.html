@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.titulo }}{% endblock %}
+{% block content %}
+<h2>{{ post.titulo }}</h2>
+<p><em>{{ post.subtitulo }}</em></p>
+<p>Autor: {{ post.autor }}</p>
+{% if post.imagen %}
+  <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" style="max-width:300px">
+{% endif %}
+<div>
+  {{ post.contenido|safe }}
+</div>
+<hr>
+<a href="{% url 'post_update' post.pk %}">Editar</a> |
+<a href="{% url 'post_delete' post.pk %}">Borrar</a> |
+<a href="{% url 'post_list' %}">Volver</a>
+{% endblock %}

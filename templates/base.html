@@ -1,3 +1,4 @@
+@"
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,16 +9,21 @@
     <header>
         <h1>🍷 Mi Proyecto: Vino Argentino</h1>
         <nav>
+            <a href="{% url 'home' %}">Inicio</a> |
+            <a href="{% url 'about' %}">Acerca de mí</a> |
             <a href="{% url 'crear_bodega' %}">Crear Bodega</a> |
             <a href="{% url 'crear_enologo' %}">Crear Enólogo</a> |
             <a href="{% url 'crear_vino' %}">Crear Vino</a> |
-            <a href="{% url 'buscar_vino' %}">Buscar Vino</a>
+            <a href="{% url 'buscar_vino' %}">Buscar Vino</a> |
+            <a href="{% url 'lista_vinos' %}">Listado Vinos</a> |
+            <a href="{% url 'post_list' %}">Blog</a> |
+            <a href="{% url 'login' %}">Ingresar</a> |
+            <a href="{% url 'signup' %}">Registrarse</a>
         </nav>
         <hr>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 
     <footer>
         <hr>
@@ -25,3 +31,4 @@
     </footer>
 </body>
 </html>
+"@ | Set-Content .\templates\base.html -Encoding UTF8

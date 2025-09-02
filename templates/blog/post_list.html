@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Pages{% endblock %}
+{% block content %}
+<h2>Páginas</h2>
+{% if posts %}
+  <ul>
+    {% for p in posts %}
+      <li>
+        <a href="{% url 'post_detail' p.pk %}">{{ p.titulo }}</a>
+        <small>— {{ p.subtitulo }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay páginas aún.</p>
+{% endif %}
+<a href="{% url 'post_create' %}">Crear nueva</a>
+{% endblock %}

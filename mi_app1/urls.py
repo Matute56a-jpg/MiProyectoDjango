@@ -12,4 +12,3 @@ urlpatterns = [
     path('vinos/', views.lista_vinos, name='lista_vinos'),
     path('prueba/', views.prueba, name='vista_de_prueba'),
 ]
-

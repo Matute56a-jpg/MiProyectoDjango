@@ -1,4 +1,4 @@
-﻿from django.db import models
+from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
 class Post(models.Model):
@@ -11,4 +11,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
-
