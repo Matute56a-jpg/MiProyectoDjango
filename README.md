@@ -1,6 +1,6 @@
 # 🍷 Proyecto Django: Vino Argentino
 
-Este es un proyecto desarrollado en **Django** como entrega final del curso. Representa un **blog y gestor de contenido sobre vinos argentinos**, con sistema de usuarios, mensajería y administración.
+Este es un proyecto web desarrollado en Python con Django como entrega final de curso. La aplicación simula un blog temático dedicado al vino argentino, con secciones de publicaciones, gestión de bodegas, enólogos y vinos.
 
 ---
 
