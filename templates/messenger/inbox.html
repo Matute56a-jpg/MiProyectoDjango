@@ -1,0 +1,20 @@
+﻿{% extends "base.html" %}
+{% block title %}Bandeja de entrada{% endblock %}
+{% block content %}
+<h2>📥 Bandeja de entrada</h2>
+<p><a href="{% url 'messenger_compose' %}">✍️ Redactar</a> | <a href="{% url 'messenger_sent' %}">📤 Enviados</a></p>
+{% if messages_list %}
+  <ul>
+  {% for m in messages_list %}
+    <li>
+      <a href="{% url 'messenger_detail' m.id %}"><strong>{{ m.subject }}</strong></a>
+      — de <em>{{ m.sender.username }}</em>
+      — {{ m.created_at|date:"d/m/Y H:i" }}
+      {% if not m.read %} <span>(nuevo)</span>{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No tienes mensajes.</p>
+{% endif %}
+{% endblock %}

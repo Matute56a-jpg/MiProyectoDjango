@@ -1,0 +1,23 @@
+﻿{% extends "base.html" %}
+{% block title %}Listado de Vinos{% endblock %}
+{% block content %}
+<h1>🍷 Listado de Vinos</h1>
+{% if vinos %}
+  <ul>
+  {% for vino in vinos %}
+    <li style="margin-bottom:12px;">
+      <strong>{{ vino.nombre }}</strong>
+      {% if vino.bodega %} — {{ vino.bodega.nombre }}{% endif %}
+      {% if vino.anio %} — {{ vino.anio }}{% endif %}
+      {% if vino.imagen %}<div><img src="{{ vino.imagen.url }}" alt="{{ vino.nombre }}" style="max-height:120px;"></div>{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p><em>No hay vinos cargados todavía.</em></p>
+{% endif %}
+<p style="margin-top:16px;">
+  <a href="{% url 'buscar_vino' %}">🔎 Buscar vino</a> |
+  <a href="{% url 'crear_vino' %}">➕ Crear vino</a>
+</p>
+{% endblock %}

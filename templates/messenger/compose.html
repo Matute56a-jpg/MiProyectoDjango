@@ -1,0 +1,38 @@
+﻿{% extends 'base.html' %}
+{% block title %}Redactar{% endblock %}
+{% block content %}
+<h2>✍️ Redactar mensaje</h2>
+
+{% if original %}
+  <p>Respondiendo a: <strong>{{ original.subject }}</strong> — de {{ original.sender.username }} para {{ original.recipient.username }}</p>
+{% endif %}
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method='post'>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <p>
+    {{ form.recipient.label_tag }}<br>
+    {{ form.recipient }}<br>
+    {{ form.recipient.errors }}
+  </p>
+  <p>
+    {{ form.subject.label_tag }}<br>
+    {{ form.subject }}<br>
+    {{ form.subject.errors }}
+  </p>
+  <p>
+    {{ form.body.label_tag }}<br>
+    {{ form.body }}<br>
+    {{ form.body.errors }}
+  </p>
+  <button type='submit'>Enviar</button>
+</form>
+{% endblock %}

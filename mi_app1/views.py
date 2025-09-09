@@ -1,11 +1,11 @@
-from django.http import HttpResponse
+﻿from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import BodegaForm, EnologoForm, VinoForm
 from .models import Bodega, Enologo, Vino
 import os
 
 def prueba(request):
-    return HttpResponse("¡Vista de prueba funcionando!")
+    return HttpResponse("Â¡Vista de prueba funcionando!")
 
 vista_de_prueba = prueba
 
@@ -13,7 +13,7 @@ print("CARGADO mi_app1/views.py DESDE:", os.path.abspath(__file__))
 
 def lista_vinos(request):
     vinos = Vino.objects.select_related('bodega').all()
-    return render(request, 'lista_vinos.html', {'vinos': vinos})
+    return render(request, 'mi_app1/lista_vinos.html', {'vinos': vinos})
 
 def crear_bodega(request):
     if request.method == 'POST':

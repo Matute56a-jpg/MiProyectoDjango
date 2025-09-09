@@ -1,5 +1,4 @@
-﻿{% load static %}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -20,10 +19,7 @@
       {% if user.is_authenticated %}
         Bienvenido, <strong>{{ user.username }}</strong> |
         <a href="{% url 'profile' %}">Perfil</a> |
-        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-  {% csrf_token %}
-  <button type="submit" class="btn">Salir</button>
-</form>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
       {% else %}
         <a href="{% url 'login' %}">Ingresar</a> |
         <a href="{% url 'signup' %}">Registrarse</a>
@@ -40,6 +36,3 @@
   </footer>
 </body>
 </html>
-
-
-

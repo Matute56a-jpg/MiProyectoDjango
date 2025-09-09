@@ -1,0 +1,50 @@
+﻿{% extends 'base.html' %}
+{% block title %}Crear cuenta{% endblock %}
+{% block content %}
+<h1>Crear cuenta</h1>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+
+  <p>
+    <label for="{{ form.username.id_for_label }}">Usuario</label>
+    {{ form.username }}
+    {{ form.username.errors }}
+  </p>
+
+  <p>
+    <label for="{{ form.first_name.id_for_label }}">Nombre</label>
+    {{ form.first_name }}
+    {{ form.first_name.errors }}
+  </p>
+
+  <p>
+    <label for="{{ form.last_name.id_for_label }}">Apellido</label>
+    {{ form.last_name }}
+    {{ form.last_name.errors }}
+  </p>
+
+  <p>
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+    {{ form.email.errors }}
+  </p>
+
+  <p>
+    <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+    {{ form.password1 }}
+    {{ form.password1.errors }}
+  </p>
+
+  <p>
+    <label for="{{ form.password2.id_for_label }}">Confirmar contraseña</label>
+    {{ form.password2 }}
+    {{ form.password2.errors }}
+  </p>
+
+  <button type="submit">Registrarme</button>
+</form>
+
+<p>¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+{% endblock %}

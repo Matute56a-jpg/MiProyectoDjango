@@ -27,14 +27,3 @@ def profile_edit(request):
         form = ProfileForm(instance=profile, user=request.user)
 
     return render(request, "accounts/profile_edit.html", {"form": form})
-from django.contrib.auth.forms import UserCreationForm
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()  # La señal post_save crea el Profile automáticamente
-            messages.success(request, "¡Cuenta creada con éxito! Ahora podés iniciar sesión.")
-            return redirect('login')
-    else:
-        form = UserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})

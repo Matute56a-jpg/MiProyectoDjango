@@ -1,0 +1,20 @@
+﻿{% extends "base.html" %}
+{% block title %}Editar perfil{% endblock %}
+{% block content %}
+<h1>✏️ Editar perfil</h1>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <p><label>Nombre</label><br>{{ form.first_name }}</p>
+  <p><label>Apellido</label><br>{{ form.last_name }}</p>
+  <p><label>Email</label><br>{{ form.email }}</p>
+  <p><label>Biografía</label><br>{{ form.bio }}</p>
+  <p><label>Avatar</label><br>{{ form.avatar }}</p>
+  {% if request.user.profile.avatar %}
+    <small>Actual: <img src="{{ request.user.profile.avatar.url }}" style="height:48px;border-radius:8px;object-fit:cover;"></small>
+  {% endif %}
+  <br><br>
+  <button type="submit">Guardar</button>
+  <a href="{% url 'profile' %}">Cancelar</a>
+</form>
+{% endblock %}

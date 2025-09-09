@@ -1,0 +1,40 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mi perfil{% endblock %}
+
+{% block content %}
+<h1>👤 Mi perfil</h1>
+
+<div style="display:flex; gap:16px; align-items:flex-start;">
+  <div>
+    <strong>Avatar</strong><br>
+    {% if profile and profile.avatar %}
+      <img src="{{ profile.avatar.url }}" alt="Avatar" width="120" height="120" style="object-fit:cover;border-radius:8px;">
+    {% else %}
+      <img src="{% static 'img/avatar_placeholder.png' %}" alt="Avatar" width="120" height="120" style="object-fit:cover;border-radius:8px;">
+    {% endif %}
+  </div>
+
+  <div>
+    <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+    <p><strong>Nombre:</strong> {{ request.user.first_name|default:"—" }}</p>
+    <p><strong>Apellido:</strong> {{ request.user.last_name|default:"—" }}</p>
+    <p><strong>Email:</strong> {{ request.user.email|default:"—" }}</p>
+
+    <p>
+      <a href="{% url 'profile_edit' %}">✏️ Editar perfil</a> |
+      <a href="{% url 'password_change' %}">🔒 Cambiar contraseña</a> |
+      <form action="{% url 'logout' %}" method="post" style="display:inline;">{% csrf_token %}
+        <button type="submit" style="background:none;border:none;color:#06c;cursor:pointer;">🚪 Cerrar sesión</button>
+      </form>
+    </p>
+
+    <hr>
+    <p><strong>📨 Mensajería:</strong>
+      <a href="{% url 'messenger_inbox' %}">📥 Bandeja</a> |
+      <a href="{% url 'messenger_sent' %}">📤 Enviados</a> |
+      <a href="{% url 'messenger_compose' %}">✍️ Redactar</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

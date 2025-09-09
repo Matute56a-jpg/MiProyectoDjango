@@ -1,0 +1,30 @@
+﻿{% extends 'base.html' %}
+{% block title %}Conversación{% endblock %}
+{% block content %}
+<h2>📩 Conversación con {{ other.username }}</h2>
+
+<div style=""border:1px solid #ddd; padding:1rem; border-radius:8px; margin-bottom:1rem;"">
+  {% for m in messages %}
+    <div style=""margin-bottom:1rem; padding-bottom:0.8rem; border-bottom:1px dashed #e5e5e5;"">
+      <div><strong>{{ m.sender.username }}</strong> → <strong>{{ m.recipient.username }}</strong></div>
+      <div style=""font-size:0.9rem; color:#666"">{{ m.created_at|date:"d/m/Y H:i" }}</div>
+      {% if forloop.first %}
+        <div style=""font-weight:600; margin-top:0.25rem;"">Asunto: {{ m.subject }}</div>
+      {% endif %}
+      <p style=""margin-top:0.5rem; white-space:pre-wrap;"">{{ m.body }}</p>
+    </div>
+  {% empty %}
+    <p>No hay mensajes en este hilo.</p>
+  {% endfor %}
+</div>
+
+<h3>Responder</h3>
+<form method=""post"">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type=""submit"">Enviar</button>
+  <a href=""{% url 'messenger_inbox' %}"">Volver a bandeja</a> |
+  <a href=""{% url 'messenger_sent' %}"">Ir a enviados</a> |
+  <a href=""{% url 'messenger_compose' %}"">Redactar</a>
+</form>
+{% endblock %}
